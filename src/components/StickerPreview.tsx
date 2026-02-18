@@ -30,8 +30,8 @@ const StickerPreview = ({ config, label, scale = 3 }: StickerPreviewProps) => {
         <Barcode
           value={label.articleCode || "000000"}
           width={Math.max(0.6, w * 0.008)}
-          height={Math.max(12, h * 0.35)}
-          fontSize={Math.max(5, h * 0.12)}
+          height={Math.max(12, h * 0.28)}
+          fontSize={Math.max(8, h * 0.16)}
           displayValue
         />
       </div>
