@@ -48,7 +48,7 @@ const StickerPreview = ({ config, label, scale = 3 }: StickerPreviewProps) => {
           className="font-black text-foreground ml-auto"
           style={{ fontSize: `${Math.max(7, h * 0.2)}px` }}
         >
-          ₹{label.price}
+          Rs.{label.price}/=
         </span>
       </div>
     </div>
