@@ -48,10 +48,10 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
                 {config.shopName}
               </span>
               <Barcode
-                value={label.articleCode || "000000"}
-                width={Math.max(0.5, w * 0.007)}
-                height={Math.max(10, h * 0.32)}
-                fontSize={Math.max(4, h * 0.1)}
+          value={label.articleCode || "000000"}
+          width={Math.max(0.5, w * 0.007)}
+          height={Math.max(10, h * 0.25)}
+          fontSize={Math.max(7, h * 0.14)}
                 displayValue
               />
               <div className="flex items-center justify-between w-full">

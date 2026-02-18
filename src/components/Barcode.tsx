@@ -23,6 +23,8 @@ const Barcode = ({ value, width = 1.2, height = 28, fontSize = 10, displayValue 
           displayValue,
           margin: 0,
           background: "transparent",
+          fontOptions: "bold",
+          textMargin: 2,
         });
       } catch (e) {
         console.error("Barcode error:", e);
