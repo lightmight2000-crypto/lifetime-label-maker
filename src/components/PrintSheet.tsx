@@ -61,7 +61,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
                   </span>
                 )}
                 <span style={{ fontSize: `${Math.max(6, h * 0.16)}px`, fontWeight: 900, color: "#000", marginLeft: "auto" }}>
-                  ₹{label.price}
+                  Rs.{label.price}/=
                 </span>
               </div>
             </div>
