@@ -1,64 +1,47 @@
 
 
-# Firebase Integration for Saving Labels
+# Save/Load Labels with Lovable Cloud
 
 ## Overview
-Add the ability to save and load label configurations to/from Firebase Firestore. No authentication required -- labels are stored globally and can be loaded by anyone using the app.
+Store label configurations in Lovable Cloud (Supabase) so users can save, load, and delete label sets -- no authentication required.
 
-## What You'll Need to Provide
-- Firebase project config (apiKey, authDomain, projectId, etc.) from your Firebase Console
-- A Firestore database created in your Firebase project (in test mode for no-auth access)
+## Database
 
-## How It Will Work
+### Table: `saved_labels`
+| Column | Type | Notes |
+|--------|------|-------|
+| id | uuid (PK) | Auto-generated |
+| name | text | User-given name for the label set |
+| labels | jsonb | Array of LabelData objects |
+| config | jsonb | StickerConfig object |
+| created_at | timestamptz | Auto-set on insert |
 
-1. **Save Labels** - A "Save" button lets you name and store the current label set (labels + sticker settings) to Firestore
-2. **Load Labels** - A "Load" dialog shows previously saved label sets that you can restore with one click
-3. **Delete Saved Labels** - Option to remove saved entries you no longer need
+RLS will be disabled (or open read/write policies) since no auth is needed.
 
-## Technical Details
+## New/Modified Files
 
-### New Dependencies
-- `firebase` -- Firebase JS SDK
-
-### New/Modified Files
-
-1. **`src/lib/firebase.ts`** (new)
-   - Firebase app initialization with your config
-   - Firestore instance export
+1. **`src/integrations/supabase/client.ts`** -- Auto-generated Supabase client (via Lovable Cloud setup)
 
 2. **`src/lib/label-storage.ts`** (new)
-   - `saveLabels(name, labels, config)` -- saves to Firestore `saved_labels` collection
-   - `loadSavedLabels()` -- fetches all saved label sets
-   - `deleteSavedLabel(id)` -- removes a saved entry
+   - `saveLabels(name, labels, config)` -- inserts into `saved_labels`
+   - `loadSavedLabels()` -- fetches all saved label sets ordered by `created_at` desc
+   - `deleteSavedLabel(id)` -- deletes a row by id
 
 3. **`src/components/SaveLoadLabels.tsx`** (new)
-   - Save button with name input dialog
-   - Load button opening a list of saved label sets
-   - Delete option per saved entry
-   - Uses shadcn Dialog component
+   - Save button: opens a Dialog with a name input field, saves current labels + config
+   - Load button: opens a Dialog listing all saved sets with a "Load" action per row
+   - Delete button per saved entry with confirmation
+   - Loading/error states with toast notifications
+   - Styled to match existing header buttons
 
 4. **`src/pages/Index.tsx`** (modified)
-   - Add SaveLoadLabels component to the header area
-   - Pass labels, config, and setter functions as props
-
-### Firestore Structure
-
-```text
-Collection: saved_labels
-  Document (auto-id):
-    - name: string
-    - labels: LabelData[]
-    - config: StickerConfig
-    - createdAt: timestamp
-```
-
-### Firestore Security Rules
-Since no auth is used, Firestore must be in **test mode** (open read/write). You'll set this in your Firebase Console.
+   - Import and render `SaveLoadLabels` in the header area
+   - Pass `labels`, `config`, `setLabels`, and `setConfig` as props
 
 ## Steps
-1. Install `firebase` package
-2. Create Firebase config file (you provide the config values)
-3. Build the storage helper functions
-4. Create the Save/Load UI component
-5. Wire it into the main page
+1. Enable Lovable Cloud on the project
+2. Create `saved_labels` table with open RLS policies
+3. Create the storage helper functions
+4. Build the Save/Load UI component
+5. Wire it into the header of the main page
 
