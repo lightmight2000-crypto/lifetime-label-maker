@@ -4,6 +4,7 @@ import StickerSettings from "@/components/StickerSettings";
 import LabelForm from "@/components/LabelForm";
 import StickerPreview from "@/components/StickerPreview";
 import PrintSheet from "@/components/PrintSheet";
+import SaveLoadLabels from "@/components/SaveLoadLabels";
 import type { StickerConfig, LabelData } from "@/lib/sticker-types";
 import { DEFAULT_CONFIG } from "@/lib/sticker-types";
 
@@ -38,7 +39,8 @@ const Index = () => {
               <p className="text-xs text-primary-foreground/60 font-medium tracking-wider uppercase">Label Printer</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+           <div className="flex items-center gap-3">
+            <SaveLoadLabels labels={labels} config={config} setLabels={setLabels} setConfig={setConfig} />
             <div className="hidden sm:flex items-center gap-2 bg-navy-light/50 px-3 py-1.5 rounded-sm">
               <Tag className="w-3.5 h-3.5 text-accent" />
               <span className="text-xs font-bold text-primary-foreground">{totalStickers} stickers</span>
