@@ -29,7 +29,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   return (
     <div id="print-area" style={{ display: "flex", flexDirection: "column", gap: `${mmToPx * 2}px` }}>
       {rows.map((row, ri) => (
-        <div key={ri} className="flex" style={{ gap: `${mmToPx * 2}px` }}>
+        <div key={ri} className="flex" style={{ gap: `${mmToPx * 2}px`, breakInside: "avoid", pageBreakInside: "avoid" }}>
           {row.map((label, ci) => (
             <div
               key={`${ri}-${ci}`}

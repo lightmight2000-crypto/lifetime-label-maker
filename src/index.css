@@ -111,6 +111,10 @@
     top: 0;
     width: 100%;
   }
+  #print-area > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
   @page {
     margin: 0;
     padding: 0;
