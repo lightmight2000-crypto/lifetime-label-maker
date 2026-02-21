@@ -33,9 +33,18 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   }
 
   return (
-    <div id="print-area" style={{ width: `${paperWidth * mmToPx}px` }}>
+    <div id="print-area" style={{ width: `${paperWidth * mmToPx}px`, margin: "0 auto" }}>
       {rows.map((row, ri) => (
-        <div key={ri} className="flex" style={{ gap: `${gapPx}px`, marginBottom: `${gapPx}px`, breakInside: "avoid", pageBreakInside: "avoid" }}>
+        <div
+          key={ri}
+          className="flex justify-center"
+          style={{
+            gap: `${gapPx}px`,
+            marginBottom: `${gapPx}px`,
+            breakInside: "avoid",
+            pageBreakInside: "avoid",
+          }}
+        >
           {row.map((label, ci) => (
             <div
               key={`${ri}-${ci}`}
@@ -54,10 +63,10 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
                 {config.shopName}
               </span>
               <Barcode
-          value={label.articleCode || "000000"}
-          width={Math.max(0.5, w * 0.007)}
-          height={Math.max(10, h * 0.25)}
-          fontSize={Math.max(7, h * 0.14)}
+                value={label.articleCode || "000000"}
+                width={Math.max(0.5, w * 0.007)}
+                height={Math.max(10, h * 0.25)}
+                fontSize={Math.max(7, h * 0.14)}
                 displayValue
               />
               <div className="flex items-center justify-between w-full">
