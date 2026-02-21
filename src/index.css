@@ -103,8 +103,6 @@
     margin: 0 !important;
     padding: 0 !important;
     width: 100mm !important;
-    height: auto !important;
-    overflow: visible !important;
   }
   body * {
     visibility: hidden;
@@ -116,16 +114,17 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100mm;
+    width: 100mm !important;
     margin: 0;
     padding: 0;
   }
   #print-area > div {
+    display: flex !important;
+    flex-wrap: nowrap !important;
     break-inside: avoid;
     page-break-inside: avoid;
   }
   @page {
-    size: 100mm 5000mm;
     margin: 0;
     padding: 0;
   }
