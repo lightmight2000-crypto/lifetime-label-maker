@@ -17,19 +17,25 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
 
   // mm to px conversion for print (1mm ≈ 3.78px at 96dpi)
   const mmToPx = 3.78;
-  const w = config.width * mmToPx;
+  const paperWidth = 100; // total paper width in mm
+  const gapMm = 2; // gap between stickers in mm
+  const cols = config.columns;
+  // Calculate sticker width to fit paper: paperWidth = cols * stickerWidth + (cols - 1) * gap
+  const stickerWidthMm = (paperWidth - (cols - 1) * gapMm) / cols;
+  const w = stickerWidthMm * mmToPx;
   const h = config.height * mmToPx;
+  const gapPx = gapMm * mmToPx;
 
   // Group into rows
   const rows: LabelData[][] = [];
-  for (let i = 0; i < expandedLabels.length; i += config.columns) {
-    rows.push(expandedLabels.slice(i, i + config.columns));
+  for (let i = 0; i < expandedLabels.length; i += cols) {
+    rows.push(expandedLabels.slice(i, i + cols));
   }
 
   return (
-    <div id="print-area">
+    <div id="print-area" style={{ width: `${paperWidth * mmToPx}px` }}>
       {rows.map((row, ri) => (
-        <div key={ri} className="flex" style={{ gap: 0, breakInside: "avoid", pageBreakInside: "avoid" }}>
+        <div key={ri} className="flex" style={{ gap: `${gapPx}px`, marginBottom: `${gapPx}px`, breakInside: "avoid", pageBreakInside: "avoid" }}>
           {row.map((label, ci) => (
             <div
               key={`${ri}-${ci}`}
