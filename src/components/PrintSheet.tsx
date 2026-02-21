@@ -15,16 +15,12 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
     }
   });
 
-  // mm to px conversion for print (1mm ≈ 3.78px at 96dpi)
-  const mmToPx = 3.78;
+  // Use mm units directly for accurate print sizing
   const paperWidth = 100; // total paper width in mm
   const gapMm = 2; // gap between stickers in mm
   const cols = config.columns;
-  // Calculate sticker width to fit paper: paperWidth = cols * stickerWidth + (cols - 1) * gap
   const stickerWidthMm = (paperWidth - (cols - 1) * gapMm) / cols;
-  const w = stickerWidthMm * mmToPx;
-  const h = config.height * mmToPx;
-  const gapPx = gapMm * mmToPx;
+  const stickerHeightMm = config.height;
 
   // Group into rows
   const rows: LabelData[][] = [];
@@ -33,14 +29,15 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   }
 
   return (
-    <div id="print-area" style={{ width: `${paperWidth * mmToPx}px`, margin: "0 auto" }}>
+    <div id="print-area" style={{ width: `${paperWidth}mm` }}>
       {rows.map((row, ri) => (
         <div
           key={ri}
-          className="flex justify-center"
           style={{
-            gap: `${gapPx}px`,
-            marginBottom: `${gapPx}px`,
+            display: "flex",
+            flexWrap: "nowrap",
+            gap: `${gapMm}mm`,
+            marginBottom: `${gapMm}mm`,
             breakInside: "avoid",
             pageBreakInside: "avoid",
           }}
@@ -48,34 +45,38 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
           {row.map((label, ci) => (
             <div
               key={`${ri}-${ci}`}
-              className="flex flex-col items-center justify-between border border-gray-200"
               style={{
-                width: `${w}px`,
-                height: `${h}px`,
-                padding: `${mmToPx * 0.5}px`,
+                width: `${stickerWidthMm}mm`,
+                height: `${stickerHeightMm}mm`,
+                padding: "0.5mm",
                 boxSizing: "border-box",
+                border: "0.2mm solid #ddd",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
               <span
                 className="font-black tracking-[0.2em] leading-none"
-                style={{ fontSize: `${Math.max(5, h * 0.14)}px`, color: "#000" }}
+                style={{ fontSize: `${Math.max(1.5, stickerHeightMm * 0.14)}mm`, color: "#000" }}
               >
                 {config.shopName}
               </span>
               <Barcode
                 value={label.articleCode || "000000"}
-                width={Math.max(0.5, w * 0.007)}
-                height={Math.max(10, h * 0.25)}
-                fontSize={Math.max(7, h * 0.14)}
+                width={Math.max(0.5, stickerWidthMm * 0.03)}
+                height={Math.max(10, stickerHeightMm * 1.2)}
+                fontSize={Math.max(7, stickerHeightMm * 0.6)}
                 displayValue
               />
-              <div className="flex items-center justify-between w-full">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
                 {label.size && (
-                  <span style={{ fontSize: `${Math.max(5, h * 0.12)}px`, fontWeight: 600, color: "#000" }}>
+                  <span style={{ fontSize: `${Math.max(1.5, stickerHeightMm * 0.12)}mm`, fontWeight: 600, color: "#000" }}>
                     {label.size}
                   </span>
                 )}
-                <span style={{ fontSize: `${Math.max(6, h * 0.16)}px`, fontWeight: 900, color: "#000", marginLeft: "auto" }}>
+                <span style={{ fontSize: `${Math.max(1.8, stickerHeightMm * 0.16)}mm`, fontWeight: 900, color: "#000", marginLeft: "auto" }}>
                   Rs.{label.price}/=
                 </span>
               </div>
