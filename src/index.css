@@ -99,6 +99,13 @@
 
 /* Print styles */
 @media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100mm !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
   body * {
     visibility: hidden;
   }
@@ -118,7 +125,7 @@
     page-break-inside: avoid;
   }
   @page {
-    size: 100mm auto;
+    size: 100mm 5000mm;
     margin: 0;
     padding: 0;
   }
