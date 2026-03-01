@@ -57,7 +57,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
               <span className="text-xs font-semibold text-muted-foreground flex-1">Label #{i + 1}</span>
               <button
                 onClick={() => duplicateLabel(label)}
-                className="p-1 text-muted-foreground hover:text-teal transition-colors"
+                className="p-1 text-muted-foreground hover:text-accent transition-colors"
                 title="Duplicate"
               >
                 <Copy className="w-3.5 h-3.5" />
