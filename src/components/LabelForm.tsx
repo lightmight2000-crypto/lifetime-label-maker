@@ -37,7 +37,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
         <h3 className="font-bold text-foreground text-sm uppercase tracking-wider">Labels</h3>
         <button
           onClick={addLabel}
-          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-sm bg-accent text-accent-foreground hover:bg-coral-dark transition-colors"
+          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-accent text-accent-foreground hover:bg-gold-dark transition-colors shadow-md"
         >
           <Plus className="w-3.5 h-3.5" />
           Add Label
