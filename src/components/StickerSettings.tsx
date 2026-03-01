@@ -101,8 +101,8 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
       </div>
 
       {/* Info */}
-      <div className="text-xs text-muted-foreground bg-muted px-3 py-2 rounded-sm">
-        Current: <span className="font-mono font-bold text-foreground">{config.width}×{config.height}mm</span> · <span className="font-mono font-bold text-foreground">{config.columns}</span> per row · X-Printer ready
+      <div className="text-xs text-muted-foreground bg-muted px-3 py-2 rounded-lg">
+        Current: <span className="font-mono font-bold text-foreground">{config.width}×{config.height}mm</span> · <span className="font-mono font-bold text-foreground">{config.columns}</span> per row · <span className="text-accent">✦</span> X-Printer ready
       </div>
     </div>
   );

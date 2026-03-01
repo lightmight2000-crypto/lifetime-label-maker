@@ -21,10 +21,10 @@ const StickerPreview = ({ config, label, scale = 3 }: StickerPreviewProps) => {
       }}
     >
       <span
-        className="font-black tracking-widest text-foreground leading-none"
-        style={{ fontSize: `${Math.max(6, h * 0.18)}px` }}
+        className="font-black tracking-wider text-foreground leading-none"
+        style={{ fontSize: `${Math.max(7, h * 0.18)}px`, fontFamily: "'Playfair Display', serif" }}
       >
-        {config.shopName}
+        ✦ {config.shopName} ✦
       </span>
       <div className="flex-1 flex items-center justify-center w-full overflow-hidden">
         <Barcode
