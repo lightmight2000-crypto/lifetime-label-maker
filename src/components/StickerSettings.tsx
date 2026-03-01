@@ -17,7 +17,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-sm p-5 space-y-4 animate-fade-in">
+    <div className="bg-card border border-border rounded-lg p-5 space-y-4 animate-fade-in">
       <div className="flex items-center gap-2 mb-1">
         <Settings2 className="w-5 h-5 text-accent" />
         <h3 className="font-bold text-foreground text-sm uppercase tracking-wider">Sticker Settings</h3>
@@ -29,9 +29,9 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
           <button
             key={p.name}
             onClick={() => applyPreset(p.config)}
-            className={`text-xs font-semibold px-3 py-1.5 rounded-sm border transition-all ${
+            className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
               config.width === p.config.width && config.height === p.config.height && config.columns === p.config.columns && !isCustom
-                ? "bg-accent text-accent-foreground border-accent"
+                ? "bg-accent text-accent-foreground border-accent shadow-md"
                 : "bg-secondary text-secondary-foreground border-border hover:border-accent"
             }`}
           >
@@ -40,9 +40,9 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
         ))}
         <button
           onClick={() => setIsCustom(true)}
-          className={`text-xs font-semibold px-3 py-1.5 rounded-sm border transition-all ${
+          className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
             isCustom
-              ? "bg-accent text-accent-foreground border-accent"
+              ? "bg-accent text-accent-foreground border-accent shadow-md"
               : "bg-secondary text-secondary-foreground border-border hover:border-accent"
           }`}
         >
@@ -59,7 +59,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
               type="number"
               value={config.width}
               onChange={(e) => onChange({ ...config, width: Number(e.target.value) })}
-              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
               min={10}
               max={100}
             />
@@ -70,7 +70,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
               type="number"
               value={config.height}
               onChange={(e) => onChange({ ...config, height: Number(e.target.value) })}
-              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
               min={8}
               max={100}
             />
@@ -81,7 +81,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
               type="number"
               value={config.columns}
               onChange={(e) => onChange({ ...config, columns: Number(e.target.value) })}
-              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
               min={1}
               max={6}
             />
@@ -96,13 +96,13 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
           type="text"
           value={config.shopName}
           onChange={(e) => onChange({ ...config, shopName: e.target.value })}
-          className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-accent uppercase"
+          className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-accent uppercase"
         />
       </div>
 
       {/* Info */}
-      <div className="text-xs text-muted-foreground bg-muted px-3 py-2 rounded-sm">
-        Current: <span className="font-mono font-bold text-foreground">{config.width}×{config.height}mm</span> · <span className="font-mono font-bold text-foreground">{config.columns}</span> per row · X-Printer ready
+      <div className="text-xs text-muted-foreground bg-muted px-3 py-2 rounded-lg">
+        Current: <span className="font-mono font-bold text-foreground">{config.width}×{config.height}mm</span> · <span className="font-mono font-bold text-foreground">{config.columns}</span> per row · <span className="text-accent">✦</span> X-Printer ready
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
         <h3 className="font-bold text-foreground text-sm uppercase tracking-wider">Labels</h3>
         <button
           onClick={addLabel}
-          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-sm bg-accent text-accent-foreground hover:bg-coral-dark transition-colors"
+          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-accent text-accent-foreground hover:bg-gold-dark transition-colors shadow-md"
         >
           <Plus className="w-3.5 h-3.5" />
           Add Label
@@ -48,16 +48,16 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
         {labels.map((label, i) => (
           <div
             key={label.id}
-            className="bg-card border border-border rounded-sm p-3 animate-fade-in"
+            className="bg-card border border-border rounded-lg p-3 animate-fade-in"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-black bg-accent text-accent-foreground w-5 h-5 flex items-center justify-center rounded-sm">
+              <span className="text-xs font-black bg-accent text-accent-foreground w-5 h-5 flex items-center justify-center rounded-lg">
                 {i + 1}
               </span>
               <span className="text-xs font-semibold text-muted-foreground flex-1">Label #{i + 1}</span>
               <button
                 onClick={() => duplicateLabel(label)}
-                className="p-1 text-muted-foreground hover:text-teal transition-colors"
+                className="p-1 text-muted-foreground hover:text-accent transition-colors"
                 title="Duplicate"
               >
                 <Copy className="w-3.5 h-3.5" />
@@ -82,7 +82,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
                   value={label.articleCode}
                   onChange={(e) => updateLabel(label.id, "articleCode", e.target.value)}
                   placeholder="e.g. 123456"
-                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
               <div>
@@ -94,7 +94,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
                   value={label.price}
                   onChange={(e) => updateLabel(label.id, "price", e.target.value)}
                   placeholder="e.g. 999"
-                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
               <div>
@@ -106,7 +106,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
                   value={label.size}
                   onChange={(e) => updateLabel(label.id, "size", e.target.value)}
                   placeholder="e.g. 42"
-                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
               <div>
@@ -119,7 +119,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
                   onChange={(e) => updateLabel(label.id, "quantity", Math.max(1, Number(e.target.value)))}
                   min={1}
                   max={500}
-                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
             </div>

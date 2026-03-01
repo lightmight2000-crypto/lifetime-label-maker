@@ -58,10 +58,10 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
               }}
             >
               <span
-                className="font-black tracking-[0.2em] leading-none"
-                style={{ fontSize: `${Math.max(1.5, stickerHeightMm * 0.14)}mm`, color: "#000" }}
+                className="font-black tracking-[0.15em] leading-none"
+                style={{ fontSize: `${Math.max(1.8, stickerHeightMm * 0.15)}mm`, color: "#000", fontFamily: "'Playfair Display', serif" }}
               >
-                {config.shopName}
+                ✦ {config.shopName} ✦
               </span>
               <Barcode
                 value={label.articleCode || "000000"}
