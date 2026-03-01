@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Playfair Display", "Amiri", "serif"],
+        arabic: ["Noto Naskh Arabic", "Amiri", "serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
