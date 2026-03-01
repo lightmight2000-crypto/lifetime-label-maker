@@ -16,11 +16,11 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   });
 
   // Use mm units directly for accurate print sizing
-  const paperWidth = 100; // total paper width in mm
-  const gapMm = 2; // gap between stickers in mm
+  const gapMm = 1; // gap between stickers in mm
   const cols = config.columns;
-  const stickerWidthMm = (paperWidth - (cols - 1) * gapMm) / cols;
+  const stickerWidthMm = config.width; // use exact configured width
   const stickerHeightMm = config.height;
+  const rowWidthMm = cols * stickerWidthMm + (cols - 1) * gapMm;
 
   // Group into rows
   const rows: LabelData[][] = [];
@@ -29,7 +29,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   }
 
   return (
-    <div id="print-area" style={{ width: `${paperWidth}mm` }}>
+    <div id="print-area" style={{ width: `${rowWidthMm}mm` }}>
       {rows.map((row, ri) => (
         <div
           key={ri}
@@ -37,7 +37,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
             display: "flex",
             flexWrap: "nowrap",
             gap: `${gapMm}mm`,
-            marginBottom: `${gapMm}mm`,
+            marginBottom: "0mm",
             breakInside: "avoid",
             pageBreakInside: "avoid",
           }}
@@ -50,11 +50,12 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
                 height: `${stickerHeightMm}mm`,
                 padding: "0.5mm",
                 boxSizing: "border-box",
-                border: "0.2mm solid #ddd",
+                border: "0.1mm dashed #ccc",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "space-between",
+                overflow: "hidden",
               }}
             >
               <span
@@ -65,9 +66,9 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
               </span>
               <Barcode
                 value={label.articleCode || "000000"}
-                width={Math.max(0.5, stickerWidthMm * 0.03)}
-                height={Math.max(10, stickerHeightMm * 1.2)}
-                fontSize={Math.max(7, stickerHeightMm * 0.6)}
+                width={Math.max(0.5, stickerWidthMm * 0.025)}
+                height={Math.max(8, stickerHeightMm * 0.45)}
+                fontSize={Math.max(5, stickerHeightMm * 0.28)}
                 displayValue
               />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>

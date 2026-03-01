@@ -100,7 +100,9 @@
   html, body {
     margin: 0 !important;
     padding: 0 !important;
-    width: 100mm !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
   }
   body * {
     visibility: hidden;
@@ -112,7 +114,6 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 100mm !important;
     margin: 0;
     padding: 0;
   }
@@ -121,9 +122,11 @@
     flex-wrap: nowrap !important;
     break-inside: avoid;
     page-break-inside: avoid;
+    margin-bottom: 0 !important;
   }
   @page {
     margin: 0;
     padding: 0;
+    size: auto;
   }
 }
