@@ -40,9 +40,9 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
         ))}
         <button
           onClick={() => setIsCustom(true)}
-          className={`text-xs font-semibold px-3 py-1.5 rounded-sm border transition-all ${
+          className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
             isCustom
-              ? "bg-accent text-accent-foreground border-accent"
+              ? "bg-accent text-accent-foreground border-accent shadow-md"
               : "bg-secondary text-secondary-foreground border-border hover:border-accent"
           }`}
         >
