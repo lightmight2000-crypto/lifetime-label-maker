@@ -96,7 +96,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
           type="text"
           value={config.shopName}
           onChange={(e) => onChange({ ...config, shopName: e.target.value })}
-          className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-accent uppercase"
+          className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-accent uppercase"
         />
       </div>
 
