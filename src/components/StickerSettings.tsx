@@ -17,7 +17,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
   };
 
   return (
-    <div className="bg-card border border-border rounded-sm p-5 space-y-4 animate-fade-in">
+    <div className="bg-card border border-border rounded-lg p-5 space-y-4 animate-fade-in">
       <div className="flex items-center gap-2 mb-1">
         <Settings2 className="w-5 h-5 text-accent" />
         <h3 className="font-bold text-foreground text-sm uppercase tracking-wider">Sticker Settings</h3>
