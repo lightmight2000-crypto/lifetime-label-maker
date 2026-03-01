@@ -81,7 +81,7 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
               type="number"
               value={config.columns}
               onChange={(e) => onChange({ ...config, columns: Number(e.target.value) })}
-              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full mt-1 px-3 py-2 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
               min={1}
               max={6}
             />
