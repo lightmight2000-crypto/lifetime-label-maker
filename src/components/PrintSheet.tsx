@@ -66,9 +66,9 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
               </span>
               <Barcode
                 value={label.articleCode || "000000"}
-                width={Math.max(0.5, stickerWidthMm * 0.03)}
-                height={Math.max(10, stickerHeightMm * 1.2)}
-                fontSize={Math.max(7, stickerHeightMm * 0.6)}
+                width={Math.max(0.5, stickerWidthMm * 0.025)}
+                height={Math.max(8, stickerHeightMm * 0.45)}
+                fontSize={Math.max(5, stickerHeightMm * 0.28)}
                 displayValue
               />
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
