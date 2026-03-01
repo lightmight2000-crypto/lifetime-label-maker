@@ -106,7 +106,7 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
                   value={label.size}
                   onChange={(e) => updateLabel(label.id, "size", e.target.value)}
                   placeholder="e.g. 42"
-                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-sm text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-full mt-0.5 px-2 py-1.5 bg-secondary border border-border rounded-lg text-sm font-mono text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
               <div>
