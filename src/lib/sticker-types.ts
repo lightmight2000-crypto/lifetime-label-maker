@@ -16,7 +16,7 @@ export interface LabelData {
 export const DEFAULT_CONFIG: StickerConfig = {
   width: 38,
   height: 25,
-  columns: 2,
+  columns: 1,
   shopName: "AL OUD",
 };
 
