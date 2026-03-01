@@ -29,7 +29,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   }
 
   return (
-    <div id="print-area" style={{ width: `${paperWidth}mm` }}>
+    <div id="print-area" style={{ width: `${rowWidthMm}mm` }}>
       {rows.map((row, ri) => (
         <div
           key={ri}
@@ -37,7 +37,7 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
             display: "flex",
             flexWrap: "nowrap",
             gap: `${gapMm}mm`,
-            marginBottom: `${gapMm}mm`,
+            marginBottom: "0mm",
             breakInside: "avoid",
             pageBreakInside: "avoid",
           }}
