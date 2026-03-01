@@ -29,9 +29,9 @@ const StickerSettings = ({ config, onChange }: StickerSettingsProps) => {
           <button
             key={p.name}
             onClick={() => applyPreset(p.config)}
-            className={`text-xs font-semibold px-3 py-1.5 rounded-sm border transition-all ${
+            className={`text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all ${
               config.width === p.config.width && config.height === p.config.height && config.columns === p.config.columns && !isCustom
-                ? "bg-accent text-accent-foreground border-accent"
+                ? "bg-accent text-accent-foreground border-accent shadow-md"
                 : "bg-secondary text-secondary-foreground border-border hover:border-accent"
             }`}
           >
