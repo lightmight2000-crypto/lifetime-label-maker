@@ -16,11 +16,11 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
   });
 
   // Use mm units directly for accurate print sizing
-  const paperWidth = 100; // total paper width in mm
-  const gapMm = 2; // gap between stickers in mm
+  const gapMm = 1; // gap between stickers in mm
   const cols = config.columns;
-  const stickerWidthMm = (paperWidth - (cols - 1) * gapMm) / cols;
+  const stickerWidthMm = config.width; // use exact configured width
   const stickerHeightMm = config.height;
+  const rowWidthMm = cols * stickerWidthMm + (cols - 1) * gapMm;
 
   // Group into rows
   const rows: LabelData[][] = [];
