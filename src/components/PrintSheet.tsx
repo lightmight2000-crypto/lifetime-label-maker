@@ -50,11 +50,12 @@ const PrintSheet = ({ config, labels }: PrintSheetProps) => {
                 height: `${stickerHeightMm}mm`,
                 padding: "0.5mm",
                 boxSizing: "border-box",
-                border: "0.2mm solid #ddd",
+                border: "0.1mm dashed #ccc",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "space-between",
+                overflow: "hidden",
               }}
             >
               <span
