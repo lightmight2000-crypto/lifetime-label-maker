@@ -48,10 +48,10 @@ const LabelForm = ({ labels, onChange }: LabelFormProps) => {
         {labels.map((label, i) => (
           <div
             key={label.id}
-            className="bg-card border border-border rounded-sm p-3 animate-fade-in"
+            className="bg-card border border-border rounded-lg p-3 animate-fade-in"
           >
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-black bg-accent text-accent-foreground w-5 h-5 flex items-center justify-center rounded-sm">
+              <span className="text-xs font-black bg-accent text-accent-foreground w-5 h-5 flex items-center justify-center rounded-lg">
                 {i + 1}
               </span>
               <span className="text-xs font-semibold text-muted-foreground flex-1">Label #{i + 1}</span>
